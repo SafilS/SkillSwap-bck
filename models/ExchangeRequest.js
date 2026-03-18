@@ -11,25 +11,24 @@ const exchangeRequestSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  skillId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Skill', // The skill being requested
+  skillOffered: {
+    type: String,
+    required: true
+  },
+  skillRequested: {
+    type: String,
     required: true
   },
   status: {
     type: String,
-    enum: ['pending', 'accepted', 'rejected', 'completed', 'scheduled'],
+    enum: ['pending', 'accepted', 'rejected'],
     default: 'pending'
+  },
+  scheduledTime: {
+    type: Date
   },
   message: {
     type: String
-  },
-  scheduledAt: {
-    type: Date
-  },
-  durationMinutes: {
-    type: Number,
-    default: 60
   }
 }, {
   timestamps: true
